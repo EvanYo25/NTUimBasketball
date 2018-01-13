@@ -1,0 +1,210 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{{ team.tName }}的紀錄</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "vendor/bootstrap/css/bootstrap.min.css"%}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/one-page-wonder.min.css"%}" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <script>
+        function getContent(ID){
+            document.getElementById(ID+"_a").value= document.getElementById(ID+"_pName").innerHTML
+            document.getElementById(ID+"_b").value= document.getElementById(ID+"_pNum").innerHTML
+            document.getElementById(ID+"_c").value= document.getElementById(ID+"_stuID").innerHTML
+        }
+    </script>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">{{ team.tName }}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+ 
+        </div>
+      </div>
+    </nav>
+
+    <header class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <br><br><br>
+            </div>
+        </div>  
+    </header>
+
+    <section>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 order-lg-2">
+            <div class="p-5">
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">球員名單</div>
+                    <div class="div-inline">  
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>名字</th>
+                                    <th>背號</th>
+                                    <th>學號</th>
+                                    <th>pID</th>
+                                    <th>修改</th>
+                                    <th>刪除球員</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for people in player %}
+                                <tr>
+                                    <td id="{{people.pID}}_pName" contenteditable="true">{{people.pName}}</td>
+                                    <td id="{{people.pID}}_pNum" contenteditable="true">{{people.pNum}}</td>
+                                    <td id="{{people.pID}}_stuID" contenteditable="true">{{people.stuID}}</td>
+                                    <td>{{people.pID}}</td>
+
+                                    <td>
+                                        {% csrf_token %}
+                                        <!-- 更改 -->
+                                        <form method="post" action="" onsubmit="return getContent({{people.pID}})">
+                                            <div>
+                                                <input type ="hidden" name = "upd">
+                                                <input type="hidden" id = "{{people.pID}}_a" name="pName" >
+                                                <input type="hidden" id = "{{people.pID}}_b" name="pNum" >
+                                                <input type="hidden" id = "{{people.pID}}_c" name="stuID" >
+                                                <input type="hidden" name="jj" value="{{people.pID}}">
+                                                <input type="submit" value="UPDATE">
+                                            </div>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <!-- 刪除球員 -->
+                                        {% csrf_token %}
+                                        <form method="post" action="">
+                                            <div>
+                                                <input type="hidden" name="delPlayer" value="del">
+                                                <input type="hidden" name="jj" value="{{people.pID}}">
+                                                <input type="submit" value="DELETE">
+                                            </div>
+                                        </form>
+                                    </td>
+
+
+
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-lg-6 order-lg-1">
+            <form action="" method="post"; width='300'>
+                    <caption>新增球員</caption>
+                    <div class="form-group">
+                        {{ PlayerForm.as_p }}
+                        <input type="hidden" name="ok" value="yes">
+
+                    </div>
+                    <button type="submit" value="新增球員" class="btn btn-primary">新增球員</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section>
+      <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">比賽列表</div>
+                    <div class="div-inline">  
+                        <table border='1'; width='350'; class="table">
+                            
+
+                            <thead>
+                                <tr>
+                                    <th>日期</th>
+                                    <th>賽事</th>
+                                    <th>對手</th>
+                                    <th>連結</th>
+                                    <th>刪除比賽</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for game in contest %}
+                                <tr>
+                                    <td>{{game.date}}</td>
+                                    <td>{{game.cName}}</td>
+                                    <td>{{game.oppo}}</td>
+                                    <td><a href="{%url 'teamRecord' tID=team.tID cID=game.cID %}">查看</a></td>
+                                    <td>
+                                        <!-- 刪除比賽 -->
+                                        {% csrf_token %}
+                                        <form method="post" action="">
+                                            <div>
+                                                <input type="hidden" name="delGame" value="del">
+                                                <input type="hidden" name="gID" value="{{game.cID}}">
+                                                <input type="submit" value="DELETE">
+                                            </div>
+                                        </form>
+                                    </td>
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <div class="btn-group btn-group-lg" role="group" aria-label="...">
+                    <!-- <button type="button" class="btn btn-primary">
+                        <a href="{%url 'addGame' tID=team.tID %}" role="button"></a>
+                    </button>
+ -->                    <a href="{%url 'addGame' tID=team.tID %}" class="btn btn-primary" role="button">新增比賽</a>
+                </div>
+        </div>
+      </div>
+    </section>
+
+    <br><br>
+    <!-- Footer -->
+    <footer class="py-4 bg-black">
+      <div class="container">
+        <p class="m-0 text-center text-white small">Copyright &copy; 201718-DB project</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static "vendor/jquery/jquery.min.js"%}"></script>
+    <script src="{% static "vendor/bootstrap/js/bootstrap.bundle.min.js"%}"></script>
+
+  </body>
+
+</html>

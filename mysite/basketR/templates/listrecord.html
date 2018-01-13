@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Show all records</title>
+    </head>
+    <body>
+
+
+        <h1>show all records!</h1>
+        <div>  
+            <table border='1'; width='300'>
+                <thead>
+                    <tr>
+                        <th>team</th>
+                        <th>contest</th>
+                        <th>oppo</th>
+                        <th>player</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for gamerecord in record_list %}
+                    <tr>
+                        <td>{{gamerecord.player.team}}</td>
+                        <td>{{gamerecord.contest.cName}}</td>
+                        <td>{{gamerecord.contest.oppo}}</td>
+                        <td>{{gamerecord.player}}</td>
+                        <td>{{gamerecord.q1.p2M}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- {{ team_list }} -->
+
+    </body>
+</html>

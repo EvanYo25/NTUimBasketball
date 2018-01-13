@@ -1,0 +1,250 @@
+<!-- templates/post.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ team.tName }}@{{c1.cName}}vs{{c1.oppo}}</title>
+</head>
+<body>
+    <div>
+        <h1 class="title">{{ team.tName }}@{{c1.cName}}vs{{c1.oppo}}</h1>
+        <h1 class="title">{{ c1.date }}</h1>
+        <div>  
+            <table border='1'; width='1200'>
+                <caption>全場數據</caption>
+                <thead>
+                    <tr>
+                        <th>球員</th>
+                        <th>得分</th>
+                        <th>兩分進</th>
+                        <th>兩分沒進</th>
+                        <th>兩分命中率</th>
+                        <th>三分進</th>
+                        <th>三分沒進</th>
+                        <th>三分命中率</th>
+                        <th>罰球進</th>
+                        <th>罰球沒進</th>
+                        <th>罰球命中率</th>
+                        <th>防守籃板</th>
+                        <th>進攻籃板</th>
+                        <th>助攻</th>
+                        <th>阻攻</th>
+                        <th>抄截</th>
+                        <th>失誤</th>
+                        <th>犯規</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for rc in allgame %}
+                    <tr>
+                        <td>{{rc.player.pName}}</td>
+                        <td>{{rc.totalpt}}</td>
+                        <td>{{rc.p2M}}</td>
+                        <td>{{rc.p2A}}</td>
+                        <td>{{rc.p2average}}%</td>
+                        <td>{{rc.p3M}}</td>
+                        <td>{{rc.p3A}}</td>
+                        <td>{{rc.p3average}}%</td>
+                        <td>{{rc.ftM}}</td>
+                        <td>{{rc.ftA}}</td>
+                        <td>{{rc.ftaverage}}%</td>
+                        <td>{{rc.dR}}</td>
+                        <td>{{rc.oR}}</td>
+                        <td>{{rc.ass}}</td>
+                        <td>{{rc.blk}}</td>
+                        <td>{{rc.steal}}</td>
+                        <td>{{rc.turno}}</td>
+                        <td>{{rc.foul}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <div>  
+            <table border='1'; width='1000'>
+                <caption>第一節數據</caption>
+                <thead>
+                    <tr>
+                        <th>球員</th>
+                        <th>兩分進</th>
+                        <th>兩分沒進</th>
+                        <th>三分進</th>
+                        <th>三分沒進</th>
+                        <th>罰球進</th>
+                        <th>罰球沒進</th>
+                        <th>防守籃板</th>
+                        <th>進攻籃板</th>
+                        <th>助攻</th>
+                        <th>阻攻</th>
+                        <th>抄截</th>
+                        <th>失誤</th>
+                        <th>犯規</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for rc in game %}
+                    <tr>
+                        <td>{{rc.player.pName}}</td>
+                        <td>{{rc.q1.p2M}}</td>
+                        <td>{{rc.q1.p2A}}</td>
+                        <td>{{rc.q1.p3M}}</td>
+                        <td>{{rc.q1.p3A}}</td>
+                        <td>{{rc.q1.ftM}}</td>
+                        <td>{{rc.q1.ftA}}</td>
+                        <td>{{rc.q1.dR}}</td>
+                        <td>{{rc.q1.oR}}</td>
+                        <td>{{rc.q1.ass}}</td>
+                        <td>{{rc.q1.blk}}</td>
+                        <td>{{rc.q1.steal}}</td>
+                        <td>{{rc.q1.turno}}</td>
+                        <td>{{rc.q1.foul}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <div>  
+            <table border='1'; width='1000'>
+                <caption>第二節數據</caption>
+                <thead>
+                    <tr>
+                        <th>球員</th>
+                        <th>兩分進</th>
+                        <th>兩分沒進</th>
+                        <th>三分進</th>
+                        <th>三分沒進</th>
+                        <th>罰球進</th>
+                        <th>罰球沒進</th>
+                        <th>防守籃板</th>
+                        <th>進攻籃板</th>
+                        <th>助攻</th>
+                        <th>阻攻</th>
+                        <th>抄截</th>
+                        <th>失誤</th>
+                        <th>犯規</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for rc in game %}
+                    <tr>
+                        <td>{{rc.player.pName}}</td>
+                        <td>{{rc.q2.p2M}}</td>
+                        <td>{{rc.q2.p2A}}</td>
+                        <td>{{rc.q2.p3M}}</td>
+                        <td>{{rc.q2.p3A}}</td>
+                        <td>{{rc.q2.ftM}}</td>
+                        <td>{{rc.q2.ftA}}</td>
+                        <td>{{rc.q2.dR}}</td>
+                        <td>{{rc.q2.oR}}</td>
+                        <td>{{rc.q2.ass}}</td>
+                        <td>{{rc.q2.blk}}</td>
+                        <td>{{rc.q2.steal}}</td>
+                        <td>{{rc.q2.turno}}</td>
+                        <td>{{rc.q2.foul}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+        <div>  
+            <table border='1'; width='1000'>
+                <caption>第三節數據</caption>
+                <thead>
+                    <tr>
+                        <th>球員</th>
+                        <th>兩分進</th>
+                        <th>兩分沒進</th>
+                        <th>三分進</th>
+                        <th>三分沒進</th>
+                        <th>罰球進</th>
+                        <th>罰球沒進</th>
+                        <th>防守籃板</th>
+                        <th>進攻籃板</th>
+                        <th>助攻</th>
+                        <th>阻攻</th>
+                        <th>抄截</th>
+                        <th>失誤</th>
+                        <th>犯規</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for rc in game %}
+                    <tr>
+                        <td>{{rc.player.pName}}</td>
+                        <td>{{rc.q3.p2M}}</td>
+                        <td>{{rc.q3.p2A}}</td>
+                        <td>{{rc.q3.p3M}}</td>
+                        <td>{{rc.q3.p3A}}</td>
+                        <td>{{rc.q3.ftM}}</td>
+                        <td>{{rc.q3.ftA}}</td>
+                        <td>{{rc.q3.dR}}</td>
+                        <td>{{rc.q3.oR}}</td>
+                        <td>{{rc.q3.ass}}</td>
+                        <td>{{rc.q3.blk}}</td>
+                        <td>{{rc.q3.steal}}</td>
+                        <td>{{rc.q3.turno}}</td>
+                        <td>{{rc.q3.foul}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <div>  
+            <table border='1'; width='1000'>
+                <caption>第四節數據</caption>
+                <thead>
+                    <tr>
+                        <th>球員</th>
+                        <th>兩分進</th>
+                        <th>兩分沒進</th>
+                        <th>三分進</th>
+                        <th>三分沒進</th>
+                        <th>罰球進</th>
+                        <th>罰球沒進</th>
+                        <th>防守籃板</th>
+                        <th>進攻籃板</th>
+                        <th>助攻</th>
+                        <th>阻攻</th>
+                        <th>抄截</th>
+                        <th>失誤</th>
+                        <th>犯規</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for rc in game %}
+                    <tr>
+                        <td>{{rc.player.pName}}</td>
+                        <td>{{rc.q4.p2M}}</td>
+                        <td>{{rc.q4.p2A}}</td>
+                        <td>{{rc.q4.p3M}}</td>
+                        <td>{{rc.q4.p3A}}</td>
+                        <td>{{rc.q4.ftM}}</td>
+                        <td>{{rc.q4.ftA}}</td>
+                        <td>{{rc.q4.dR}}</td>
+                        <td>{{rc.q4.oR}}</td>
+                        <td>{{rc.q4.ass}}</td>
+                        <td>{{rc.q4.blk}}</td>
+                        <td>{{rc.q4.steal}}</td>
+                        <td>{{rc.q4.turno}}</td>
+                        <td>{{rc.q4.foul}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>

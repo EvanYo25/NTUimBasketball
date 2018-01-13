@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Show all records</title>
+    </head>
+    <body>
+
+
+        <h1>新增一場比賽</h1>
+        <div>
+            <form action="{%url 'GDetail' tID=team.tID %}" method="post">
+                {{ ContestForm.as_p }}
+                <!-- <input type="hidden" name="team" value="{{team.tID}}"> -->
+                <!-- <input type="checkbox" name="players" value="{{player.name}}"> -->
+                <input type="hidden" name="ok" value="yes">
+                <input type="submit" value="送出">
+            </form>
+        </div>
+
+
+<!--         <div>
+            <form action="" method="post">
+                {{ RecordForm.as_table }}
+                <input type="hidden" name="ok" value="yes">
+                <input type="submit" value="送出">
+            </form>
+        </div> -->
+
+    </body>
+
+</html>

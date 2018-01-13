@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Show all records</title>
+    </head>
+    <body>
+
+            <table border='1'; width='350'>
+                <caption>比賽列表</caption>
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>賽事</th>
+                        <th>對手</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for game in player %}
+                    <tr>
+                        <td>1</td>
+                        <td>{{game}}</td>
+                        <td>{{game.stuID}}</td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+    </body>
+
+</html>

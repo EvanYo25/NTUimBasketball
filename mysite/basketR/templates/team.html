@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Show all teams</title>
+    </head>
+    <body>
+
+
+        <h1>隊伍列表</h1>
+        <div>  
+            <table border='1'; width='300'>
+                <thead>
+                    <tr>
+                        <th>tID</th>
+                        <th>tName</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for team in team_list %}
+                    <tr>
+                        <td>{{team.tID}}</td>
+                        <td><a href="{%url 'teamDetail' tID=team.tID%}">{{team.tName}}<a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- {{ team_list }} -->
+
+    </body>
+</html>
