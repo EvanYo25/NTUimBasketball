@@ -36,7 +36,10 @@
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
       <div class="container">
         <a class="navbar-brand" href="{%url 'team'%}">Home</a>
+        <a class="navbar-brand" href="#"></a>
         <a class="navbar-brand" href="#">{{ team.tName }}</a>
+        <a class="navbar-brand" href="#"></a>
+        <a href="{%url 'addGame' tID=team.tID %}" class="navbar-brand">新增比賽</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -55,7 +58,7 @@
     </header>
 
     <section>
-      <div class="container">
+      <div class="container" style="margin-top:30px">
         <div class="row align-items-center">
           <div class="col-lg-6 order-lg-2">
             <div class="p-5">
@@ -107,10 +110,6 @@
                                             </div>
                                         </form>
                                     </td>
-
-
-
-
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -119,6 +118,8 @@
                 </div>
             </div>
           </div>
+
+
           <div class="col-lg-6 order-lg-1">
             <h3>新增球員</h3>
             <form action="" method="post"; width='300'>
@@ -137,7 +138,7 @@
 
 
     <section>
-      <div class="container">
+      <div class="container" style="margin-top:40px; margin-bottom: 100px">
         <div class="row">
             <div class="col">
                 <div class="panel panel-default">
@@ -183,14 +184,11 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+<!--         <div class="row">
                 <div class="btn-group btn-group-lg" role="group" aria-label="...">
-                    <!-- <button type="button" class="btn btn-primary">
-                        <a href="{%url 'addGame' tID=team.tID %}" role="button"></a>
-                    </button>
- -->                    <a href="{%url 'addGame' tID=team.tID %}" class="btn btn-primary" role="button">新增比賽</a>
+                    <a href="{%url 'addGame' tID=team.tID %}" class="btn btn-primary" role="button">新增比賽</a>
                 </div>
-        </div>
+        </div> -->
       </div>
     </section>
 

@@ -265,9 +265,7 @@ def addGame(request, tID):
 	player = Player.objects.filter(team=team)
 	# else:
 		# return HttpResponseRedirect("/addGame/")
-	a = int(tID)
-	print(type(a))
-	print("kkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+	# a = int(tID)
 	# f = ContestForm(initial={'date':datetime.date.today()}, tID=a)
 	# print(type(f))
 	context = {'team': team, 'player':player, 'ContestForm':ContestForm(initial={'date':datetime.date.today()})}
