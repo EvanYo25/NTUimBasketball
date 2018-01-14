@@ -1,14 +1,63 @@
+<!--重要ㄛ-->
+
+{% load staticfiles %}
+
+<!--重要ㄛ-->
+
+
+
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Show all teams</title>
+
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+
+        <title>All Team</title>
+
+        
+
+        <!-- 連結ＣＳＳ -->
+
+        <!-- Bootstrap core CSS -->
+
+            <!--重要ㄛ-->
+
+        <!--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+
+        <link href="{% static "vendor/bootstrap/css/bootstrap.min.css"%}" rel="stylesheet">
+
+            <!--重要ㄛ-->
+
+        <!-- Custom fonts for this template -->
+
+        <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+
+            <!--重要ㄛ-->
+
+        <!--<link href="css/one-page-wonder.min.css" rel="stylesheet">-->
+
+        <link href="{% static "css/one-page-wonder.min.css"%}" rel="stylesheet">
+
+            <!--重要ㄛ-->
+
+        <!-- 連結ＣＳＳ -->
+
     </head>
-    <body>
+
+    <body class="container container-center text-center">
 
 
         <h1>隊伍列表</h1>
         <div>  
-            <table border='1'; width='300'>
+            <table class="table table-strip table-bordered" border='1'; width='300'>
                 <thead>
                     <tr>
                         <th>tID</th>

@@ -35,6 +35,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
       <div class="container">
+        <a class="navbar-brand" href="{%url 'team'%}">Home</a>
         <a class="navbar-brand" href="#">{{ team.tName }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -60,7 +61,7 @@
             <div class="p-5">
                 <div class="panel panel-default">
                     <!-- Default panel contents -->
-                    <div class="panel-heading">球員名單</div>
+                    <div class="panel-heading"><h3>球員名單</h3></div>
                     <div class="div-inline">  
                         <table class="table table-sm">
                             <thead>
@@ -68,7 +69,7 @@
                                     <th>名字</th>
                                     <th>背號</th>
                                     <th>學號</th>
-                                    <th>pID</th>
+                                    <!-- <th>pID</th> -->
                                     <th>修改</th>
                                     <th>刪除球員</th>
                                 </tr>
@@ -79,7 +80,7 @@
                                     <td id="{{people.pID}}_pName" contenteditable="true">{{people.pName}}</td>
                                     <td id="{{people.pID}}_pNum" contenteditable="true">{{people.pNum}}</td>
                                     <td id="{{people.pID}}_stuID" contenteditable="true">{{people.stuID}}</td>
-                                    <td>{{people.pID}}</td>
+                                    <!-- <td>{{people.pID}}</td> -->
 
                                     <td>
                                         {% csrf_token %}
@@ -119,8 +120,9 @@
             </div>
           </div>
           <div class="col-lg-6 order-lg-1">
+            <h3>新增球員</h3>
             <form action="" method="post"; width='300'>
-                    <caption>新增球員</caption>
+                    <!-- <caption>新增球員</caption> -->
                     <div class="form-group">
                         {{ PlayerForm.as_p }}
                         <input type="hidden" name="ok" value="yes">
@@ -140,7 +142,7 @@
             <div class="col">
                 <div class="panel panel-default">
                     <!-- Default panel contents -->
-                    <div class="panel-heading">比賽列表</div>
+                    <div class="panel-heading"><h3>比賽列表</h3></div>
                     <div class="div-inline">  
                         <table border='1'; width='350'; class="table">
                             
@@ -194,7 +196,7 @@
 
     <br><br>
     <!-- Footer -->
-    <footer class="py-4 bg-black">
+    <footer class="py-4 bg-black fixed-bottom">
       <div class="container">
         <p class="m-0 text-center text-white small">Copyright &copy; 201718-DB project</p>
       </div>

@@ -1,10 +1,12 @@
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 import datetime
 
 from .models import Team, Player, Contest, QRecord, GameRecord
 from .form import PlayerForm, ContestForm
 # Create your views here.
+
 def listteam(request):
 	team_list = Team.objects.all()
 
@@ -56,7 +58,59 @@ def detail(request, tID):
 		if pID:
 			Player.objects.filter(pID=pID).update(pName=pName, pNum = pNum, stuID = stuID)
 		return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+	if 'finalsub' in request.POST:
+		cName = request.POST['cName2']
+		date = request.POST['date2']
+		oppo = request.POST['oppo2']
+		team = request.POST['team2']
 
+		playerss=[]
+		for xxx in request.POST:
+			if xxx[0]== "_":
+				playerss.append(int(request.POST[xxx]))
+		team = Team.objects.get(tName = team)
+		c = Contest(cName = cName, date = date, oppo=oppo, team = team)
+		c.save()
+		
+		for xd in playerss:
+			player = Player.objects.get(pID=xd)
+			gamerecord = GameRecord()
+			gamerecord.contest = c
+			gamerecord.player = player
+			for i in range(1,5):
+				q = str(i)
+				q = "q"+q
+				x = player.pID
+				x = str(x)
+				target = q+"+"+x+"+"
+				Q = QRecord()
+				Q.p2M =request.POST[target+'p2M']
+				Q.p3M =request.POST[target+'p3M']
+				Q.p3A =request.POST[target+'p3A']
+				Q.ftM =request.POST[target+'ftM']
+				Q.ftA =request.POST[target+'ftA']
+				Q.dR =request.POST[target+'dR']
+				Q.oR =request.POST[target+'oR']
+				Q.ass =request.POST[target+'ass']
+				Q.blk =request.POST[target+'blk']
+				Q.steal =request.POST[target+'steal']
+				Q.turno =request.POST[target+'turno']
+				Q.foul =request.POST[target+'foul']
+				Q.save()
+				if i==1:
+					gamerecord.q1 = Q
+				elif i==2:
+					gamerecord.q2 = Q
+				elif i==3:
+					gamerecord.q3 = Q
+				else:
+					gamerecord.q4 = Q
+
+			gamerecord.save()
+		return HttpResponseRedirect(reverse('teamDetail', args=[tID]))
+		
+
+				
 
 	f = PlayerForm()
 	context = {'team':team, 'player':player, 'contest':contest, 'PlayerForm':f}
@@ -64,6 +118,35 @@ def detail(request, tID):
 
 
 def record(request, tID, cID):
+	if 'upd' in request.POST:
+		cID = request.POST['cID']
+		pID = request.POST['pID']
+		quarter = request.POST['quarter']
+		game = GameRecord.objects.get(contest_id=int(cID),player_id = int(pID))
+		q = game.q1
+		if quarter == 'q2':
+			q = game.q2
+		elif quarter =='q3':
+			q = game.q3
+		elif quarter =='q4':
+			q = game.q4
+
+		q.p2M = request.POST['p2M']
+		q.p2A = request.POST['p2A']
+		q.p3M = request.POST['p3M']
+		q.p3A = request.POST['p3A']
+		q.ftM = request.POST['ftM']
+		q.ftA = request.POST['ftA']
+		q.dR = request.POST['dR']
+		q.oR = request.POST['oR']
+		q.ass = request.POST['ass']
+		q.blk = request.POST['blk']
+		q.steal = request.POST['steal']
+		q.turno = request.POST['turno']
+		q.foul = request.POST['foul']
+		q.save()
+		return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
 	team = Team.objects.get(tID=tID)
 	# player = Player.objects.filter(team=team)
 	# contest = Contest.objects.filter(team=team)
@@ -177,14 +260,17 @@ def welcome(request):
 
 
 def addGame(request, tID):
-	if tID:
-		team = Team.objects.get(tID=tID)
-		player = Player.objects.filter(team=team)
+
+	team = Team.objects.get(tID=tID)
+	player = Player.objects.filter(team=team)
 	# else:
 		# return HttpResponseRedirect("/addGame/")
-
-	f = ContestForm(initial={'date':datetime.date.today()})
-	context = {'team': team, 'player':player, 'ContestForm':f}
+	a = int(tID)
+	print(type(a))
+	print("kkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+	# f = ContestForm(initial={'date':datetime.date.today()}, tID=a)
+	# print(type(f))
+	context = {'team': team, 'player':player, 'ContestForm':ContestForm(initial={'date':datetime.date.today()})}
 	
 	return render(request, 'addGame.html', context)
 
@@ -194,10 +280,19 @@ def gameDetail(request, tID):
 		cName = request.POST['cName']
 		date = request.POST['date']
 		oppo = request.POST['oppo']
-		player = request.POST.getlist('abc')
+
+		player=[]
+		for xxx in request.POST:
+			if xxx[0]=='_':
+				player.append(int(request.POST[xxx]))
 		team = Team.objects.get(tID=tID)
 		c = Contest(cName=cName, date=date, oppo=oppo, team=team)
 		# c.save()
+		player2 = []
+		for i in player:
+			player2.append(Player.objects.get(pID=i))
+		context = {'player':player2, 'c':c, 'team':team}
+		return render_to_response('addGdetail.html',context)
+	# return render_to_response('addGdetail.html',context)
 
-		context = {'player':player}
-	return render_to_response('addGdetail.html',context)
+

@@ -1,250 +1,919 @@
-<!-- templates/post.html -->
+<!--重要ㄛ-->
 
+{% load staticfiles %}
+
+<!--重要ㄛ-->
 <!DOCTYPE html>
+
 <html>
+
 <head>
+
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>{{ team.tName }}@{{c1.cName}}vs{{c1.oppo}}</title>
+
+    
+
+    <!-- 連結ＣＳＳ -->
+
+        <!-- Bootstrap core CSS -->
+
+            <!--重要ㄛ-->
+
+    <!--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+
+    <link href="{% static "vendor/bootstrap/css/bootstrap.min.css"%}" rel="stylesheet">
+
+            <!--重要ㄛ-->
+
+        <!-- Custom fonts for this template -->
+
+        <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+
+            <!--重要ㄛ-->
+
+        <!--<link href="css/one-page-wonder.min.css" rel="stylesheet">-->
+
+        <link href="{% static "css/one-page-wonder.min.css"%}" rel="stylesheet">
+
+            <!--重要ㄛ-->
+
+    <!-- 連結ＣＳＳ -->
+
 </head>
+
+    
+
+    
+
 <body>
+
+    <!--YuLun 的code-->
+
+    <script>
+
+        function getContent(ID){
+
+            document.getElementById(ID+"_a").value= document.getElementById(ID+"_pName").innerHTML
+
+            document.getElementById(ID+"_b").value= document.getElementById(ID+"_pNum").innerHTML
+
+            document.getElementById(ID+"_c").value= document.getElementById(ID+"_stuID").innerHTML
+
+        }
+
+    </script>
+    <script>
+
+        function getContent2(ID,q){
+            document.getElementById(ID+"_"+q+"_p2M").value = document.getElementById("_"+ID+"_"+q+"_p2M").innerHTML
+            document.getElementById(ID+"_"+q+"_p2A").value = document.getElementById("_"+ID+"_"+q+"_p2A").innerHTML
+            document.getElementById(ID+"_"+q+"_p3M").value = document.getElementById("_"+ID+"_"+q+"_p3M").innerHTML
+            document.getElementById(ID+"_"+q+"_p3A").value = document.getElementById("_"+ID+"_"+q+"_p3A").innerHTML
+            document.getElementById(ID+"_"+q+"_ftM").value = document.getElementById("_"+ID+"_"+q+"_ftM").innerHTML
+            document.getElementById(ID+"_"+q+"_ftA").value = document.getElementById("_"+ID+"_"+q+"_ftA").innerHTML
+            document.getElementById(ID+"_"+q+"_dR").value = document.getElementById("_"+ID+"_"+q+"_dR").innerHTML
+            document.getElementById(ID+"_"+q+"_oR").value = document.getElementById("_"+ID+"_"+q+"_oR").innerHTML
+            document.getElementById(ID+"_"+q+"_ass").value = document.getElementById("_"+ID+"_"+q+"_ass").innerHTML
+            document.getElementById(ID+"_"+q+"_blk").value = document.getElementById("_"+ID+"_"+q+"_blk").innerHTML
+            document.getElementById(ID+"_"+q+"_steal").value = document.getElementById("_"+ID+"_"+q+"_steal").innerHTML
+            document.getElementById(ID+"_"+q+"_turno").value = document.getElementById("_"+ID+"_"+q+"_turno").innerHTML
+            document.getElementById(ID+"_"+q+"_foul").value = document.getElementById("_"+ID+"_"+q+"_foul").innerHTML
+        }
+
+    </script>
+
+    <!--YuLun 的code-->
+
+    <!-- 最上面那一條 -->
+
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+
+      <div class="container">
+
+
+            <h1 class="navbar-brand"><a href="{%url 'teamDetail' tID=team.tID%}">{{ team.tName }}</a></h1>
+
+            <!-- 隊名＠盃賽vs對手 -->
+
+            <h1 class="navbar-brand">{{c1.cName}}vs{{c1.oppo}}</h1>
+
+            <!-- 隊名＠盃賽vs對手 -->
+
+            <!--日期-->
+
+            <h1 class="navbar-brand">{{ c1.date }}</h1>
+
+            <!--日期-->
+
+        <!--不要sign in 、log in、 檢索案件-->
+
+        <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+
+          <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+          <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item">
+
+              <a class="nav-link" href="#">Sign Up</a>
+
+            </li>
+
+            <li class="nav-item">
+
+              <a class="nav-link" href="#">Log In</a>
+
+            </li>
+
+          </ul>
+
+        </div>-->
+
+        <!--不要sign in 、log in、 檢索案件-->
+
+      </div>
+
+    </nav>
+
+    <!-- 最上面那一條 -->
+
+    
+
+    
+
+    
+
+    
+
+    
+
     <div>
+
+        <!--改到上面那一欄
+
         <h1 class="title">{{ team.tName }}@{{c1.cName}}vs{{c1.oppo}}</h1>
-        <h1 class="title">{{ c1.date }}</h1>
-        <div>  
-            <table border='1'; width='1200'>
-                <caption>全場數據</caption>
-                <thead>
-                    <tr>
-                        <th>球員</th>
-                        <th>得分</th>
-                        <th>兩分進</th>
-                        <th>兩分沒進</th>
-                        <th>兩分命中率</th>
-                        <th>三分進</th>
-                        <th>三分沒進</th>
-                        <th>三分命中率</th>
-                        <th>罰球進</th>
-                        <th>罰球沒進</th>
-                        <th>罰球命中率</th>
-                        <th>防守籃板</th>
-                        <th>進攻籃板</th>
-                        <th>助攻</th>
-                        <th>阻攻</th>
-                        <th>抄截</th>
-                        <th>失誤</th>
-                        <th>犯規</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for rc in allgame %}
-                    <tr>
-                        <td>{{rc.player.pName}}</td>
-                        <td>{{rc.totalpt}}</td>
-                        <td>{{rc.p2M}}</td>
-                        <td>{{rc.p2A}}</td>
-                        <td>{{rc.p2average}}%</td>
-                        <td>{{rc.p3M}}</td>
-                        <td>{{rc.p3A}}</td>
-                        <td>{{rc.p3average}}%</td>
-                        <td>{{rc.ftM}}</td>
-                        <td>{{rc.ftA}}</td>
-                        <td>{{rc.ftaverage}}%</td>
-                        <td>{{rc.dR}}</td>
-                        <td>{{rc.oR}}</td>
-                        <td>{{rc.ass}}</td>
-                        <td>{{rc.blk}}</td>
-                        <td>{{rc.steal}}</td>
-                        <td>{{rc.turno}}</td>
-                        <td>{{rc.foul}}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+
+        <h1 class="title">{{ c1.date }}</h1>-->
+
+        <!--用來不要頂到最上面-->
+
+        <header class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6 order-lg-2">
+
+                <br><br><br>
+
+            </div>
+
+        </div>  
+
+        </header>
+
+        <!--用來不要頂到最上面-->
+
+        <!--全場數據-->
+
+        <section>
+
+            <div class="container-fluid">
+
+<!--                <div class="row align-items-center">-->
+
+<!--                    <div class="col-lg-6 order-lg-2">-->
+
+                        <div class="p-5">
+
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading">
+
+                                    <h1>全場數據</h1>
+
+                                </div>
+
+                                <div class="div-inline">
+
+                                    <table class="table table-striped">
+
+                                        <thead>
+
+                                            <tr>
+
+                                                <th>球員</th>
+
+                                                <th>得分</th>
+
+                                                <th>兩分進</th>
+
+                                                <th>兩分沒進</th>
+
+                                                <th>兩分命中率</th>
+
+                                                <th>三分進</th>
+
+                                                <th>三分沒進</th>
+
+                                                <th>三分命中率</th>
+
+                                                <th>罰球進</th>
+
+                                                <th>罰球沒進</th>
+
+                                                <th>罰球命中率</th>
+
+                                                <th>防守籃板</th>
+
+                                                <th>進攻籃板</th>
+
+                                                <th>助攻</th>
+
+                                                <th>阻攻</th>
+
+                                                <th>抄截</th>
+
+                                                <th>失誤</th>
+
+                                                <th>犯規</th>
+
+                                            </tr>
+
+                                        </thead>
+
+                                        <tbody>
+
+                                        {% for rc in allgame %}
+
+                                            <tr>
+
+                                                <td>{{rc.player.pName}}</td>
+
+                                                <td>{{rc.totalpt}}</td>
+
+                                                <td>{{rc.p2M}}</td>
+
+                                                <td>{{rc.p2A}}</td>
+
+                                                <td>{{rc.p2average}}%</td>
+
+                                                <td>{{rc.p3M}}</td>
+
+                                                <td>{{rc.p3A}}</td>
+
+                                                <td>{{rc.p3average}}%</td>
+
+                                                <td>{{rc.ftM}}</td>
+
+                                                <td>{{rc.ftA}}</td>
+
+                                                <td>{{rc.ftaverage}}%</td>
+
+                                                <td>{{rc.dR}}</td>
+
+                                                <td>{{rc.oR}}</td>
+
+                                                <td>{{rc.ass}}</td>
+
+                                                <td>{{rc.blk}}</td>
+
+                                                <td>{{rc.steal}}</td>
+
+                                                <td>{{rc.turno}}</td>
+
+                                                <td>{{rc.foul}}</td>
+
+                                            </tr>
+
+                                        {% endfor %}
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+<!--                    </div>-->
+
+<!--                </div>-->
+
+            </div>
+
+        </section>
+
+        <!--全場數據-->
 
 
 
-        <div>  
-            <table border='1'; width='1000'>
-                <caption>第一節數據</caption>
-                <thead>
-                    <tr>
-                        <th>球員</th>
-                        <th>兩分進</th>
-                        <th>兩分沒進</th>
-                        <th>三分進</th>
-                        <th>三分沒進</th>
-                        <th>罰球進</th>
-                        <th>罰球沒進</th>
-                        <th>防守籃板</th>
-                        <th>進攻籃板</th>
-                        <th>助攻</th>
-                        <th>阻攻</th>
-                        <th>抄截</th>
-                        <th>失誤</th>
-                        <th>犯規</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for rc in game %}
-                    <tr>
-                        <td>{{rc.player.pName}}</td>
-                        <td>{{rc.q1.p2M}}</td>
-                        <td>{{rc.q1.p2A}}</td>
-                        <td>{{rc.q1.p3M}}</td>
-                        <td>{{rc.q1.p3A}}</td>
-                        <td>{{rc.q1.ftM}}</td>
-                        <td>{{rc.q1.ftA}}</td>
-                        <td>{{rc.q1.dR}}</td>
-                        <td>{{rc.q1.oR}}</td>
-                        <td>{{rc.q1.ass}}</td>
-                        <td>{{rc.q1.blk}}</td>
-                        <td>{{rc.q1.steal}}</td>
-                        <td>{{rc.q1.turno}}</td>
-                        <td>{{rc.q1.foul}}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+        
+
+        <section>
+
+            <div class="container-fluid">
+
+                <div class="row align-items-center">
+
+                    <div class="col-lg-6 order-lg-2">
+
+                        <div class="p-5">
+
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading">
+
+                                    <h1>第一節數據</h1>
+
+                                </div>
+
+                                <div class="div-inline">
+
+                                    <table class="table table-striped">
+
+                                        <caption>第一節數據</caption>
+
+                                        <thead>
+
+                                            <tr>
+
+                                                <th style="width: 10%">球員</th>
+
+                                                <th >兩分進</th>
+
+                                                <th >兩分沒進</th>
+
+                                                <th >三分進</th>
+
+                                                <th >三分沒進</th>
+
+                                                <th >罰球進</th>
+
+                                                <th>罰球沒進</th>
+
+                                                <th>防守籃板</th>
+
+                                                <th>進攻籃板</th>
+
+                                                <th>助攻</th>
+
+                                                <th>阻攻</th>
+
+                                                <th>抄截</th>
+
+                                                <th >失誤</th>
+
+                                                <th >犯規</th>
+
+                                            </tr>
+
+                                        </thead>
+
+                                        <tbody>
+
+                                        {% for rc in game %}
+
+                                            <tr>
+
+                                                <td>{{rc.player.pName}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q1_p2M">{{rc.q1.p2M}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q1_p2A">{{rc.q1.p2A}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q1_p3M">{{rc.q1.p3M}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q1_p3A">{{rc.q1.p3A}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q1_ftM">{{rc.q1.ftM}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q1_ftA">{{rc.q1.ftA}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q1_dR">{{rc.q1.dR}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q1_oR">{{rc.q1.oR}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q1_ass">{{rc.q1.ass}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q1_blk">{{rc.q1.blk}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q1_steal">{{rc.q1.steal}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q1_turno">{{rc.q1.turno}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q1_foul">{{rc.q1.foul}}</td>
+
+                                                <td>
+                                                    <form method="post" action="" onsubmit="return getContent2({{rc.player.pID}},'q1')">
+                                                        <div>
+                                                            <input type ="hidden" name = "upd">
+                                                            <input type ="hidden" name = "pID" value = "{{rc.player.pID}}">
+                                                            <input type ="hidden" name = "quarter" value = "q1">
+                                                            <input type ="hidden" name = "cID" value = "{{c1.cID}}">
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q1_p2M" name="p2M" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q1_p2A" name="p2A" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q1_p3M" name="p3M" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q1_p3A" name="p3A" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q1_ftM" name="ftM" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q1_ftA" name="ftA" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q1_dR" name="dR" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q1_oR" name="oR" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q1_ass" name="ass" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q1_blk" name="blk" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q1_steal" name="steal" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q1_turno" name="turno" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q1_foul" name="foul" >
+                                                    
+                                                            <input type="submit" value="UPDATE">
+                                                        </div>
+                                                    </form>
+                                                </td>
+
+                                            </tr>
+
+                                        {% endfor %}
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
 
 
 
-        <div>  
-            <table border='1'; width='1000'>
-                <caption>第二節數據</caption>
-                <thead>
-                    <tr>
-                        <th>球員</th>
-                        <th>兩分進</th>
-                        <th>兩分沒進</th>
-                        <th>三分進</th>
-                        <th>三分沒進</th>
-                        <th>罰球進</th>
-                        <th>罰球沒進</th>
-                        <th>防守籃板</th>
-                        <th>進攻籃板</th>
-                        <th>助攻</th>
-                        <th>阻攻</th>
-                        <th>抄截</th>
-                        <th>失誤</th>
-                        <th>犯規</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for rc in game %}
-                    <tr>
-                        <td>{{rc.player.pName}}</td>
-                        <td>{{rc.q2.p2M}}</td>
-                        <td>{{rc.q2.p2A}}</td>
-                        <td>{{rc.q2.p3M}}</td>
-                        <td>{{rc.q2.p3A}}</td>
-                        <td>{{rc.q2.ftM}}</td>
-                        <td>{{rc.q2.ftA}}</td>
-                        <td>{{rc.q2.dR}}</td>
-                        <td>{{rc.q2.oR}}</td>
-                        <td>{{rc.q2.ass}}</td>
-                        <td>{{rc.q2.blk}}</td>
-                        <td>{{rc.q2.steal}}</td>
-                        <td>{{rc.q2.turno}}</td>
-                        <td>{{rc.q2.foul}}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+        <section>
+
+            <div class="container-fluid">
+
+                <div class="row align-items-center">
+
+                    <div class="col-lg-6 order-lg-2">
+
+                        <div class="p-5">
+
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading">
+
+                                    <h1>第二節數據</h1>
+
+                                </div>
+
+                                <div class="div-inline">
+
+                                    <table class="table table-striped">
+
+                                        <caption>第二節數據</caption>
+                                        <thead>
+
+                                            <tr>
+
+                                                <th style="width: 10%">球員</th>
+
+                                                <th>兩分進</th>
+
+                                                <th>兩分沒進</th>
+
+                                                <th>三分進</th>
+
+                                                <th>三分沒進</th>
+
+                                                <th>罰球進</th>
+
+                                                <th>罰球沒進</th>
+
+                                                <th>防守籃板</th>
+
+                                                <th>進攻籃板</th>
+
+                                                <th>助攻</th>
+
+                                                <th>阻攻</th>
+
+                                                <th>抄截</th>
+
+                                                <th>失誤</th>
+
+                                                <th>犯規</th>
+
+                                            </tr>
+
+                                        </thead>
+
+                                        <tbody>
+
+                                        {% for rc in game %}
+
+                                             <tr>
+
+                                                <td>{{rc.player.pName}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q2_p2M">{{rc.q2.p2M}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q2_p2A">{{rc.q2.p2A}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q2_p3M">{{rc.q2.p3M}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q2_p3A">{{rc.q2.p3A}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q2_ftM">{{rc.q2.ftM}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q2_ftA">{{rc.q2.ftA}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q2_dR">{{rc.q2.dR}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q2_oR">{{rc.q2.oR}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q2_ass">{{rc.q2.ass}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q2_blk">{{rc.q2.blk}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q2_steal">{{rc.q2.steal}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q2_turno">{{rc.q2.turno}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q2_foul">{{rc.q2.foul}}</td>
+
+                                                <td>
+                                                    <form method="post" action="" onsubmit="return getContent2({{rc.player.pID}},'q2')">
+                                                        <div>
+                                                            <input type ="hidden" name = "upd">
+                                                            <input type ="hidden" name = "pID" value = "{{rc.player.pID}}">
+                                                            <input type ="hidden" name = "quarter" value = "q2">
+                                                            <input type ="hidden" name = "cID" value = "{{c1.cID}}">
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q2_p2M" name="p2M" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q2_p2A" name="p2A" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q2_p3M" name="p3M" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q2_p3A" name="p3A" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q2_ftM" name="ftM" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q2_ftA" name="ftA" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q2_dR" name="dR" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q2_oR" name="oR" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q2_ass" name="ass" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q2_blk" name="blk" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q2_steal" name="steal" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q2_turno" name="turno" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q2_foul" name="foul" >
+                                                    
+                                                            <input type="submit" value="UPDATE">
+                                                        </div>
+                                                    </form>
+                                                </td>
+
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
 
 
-        <div>  
-            <table border='1'; width='1000'>
-                <caption>第三節數據</caption>
-                <thead>
-                    <tr>
-                        <th>球員</th>
-                        <th>兩分進</th>
-                        <th>兩分沒進</th>
-                        <th>三分進</th>
-                        <th>三分沒進</th>
-                        <th>罰球進</th>
-                        <th>罰球沒進</th>
-                        <th>防守籃板</th>
-                        <th>進攻籃板</th>
-                        <th>助攻</th>
-                        <th>阻攻</th>
-                        <th>抄截</th>
-                        <th>失誤</th>
-                        <th>犯規</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for rc in game %}
-                    <tr>
-                        <td>{{rc.player.pName}}</td>
-                        <td>{{rc.q3.p2M}}</td>
-                        <td>{{rc.q3.p2A}}</td>
-                        <td>{{rc.q3.p3M}}</td>
-                        <td>{{rc.q3.p3A}}</td>
-                        <td>{{rc.q3.ftM}}</td>
-                        <td>{{rc.q3.ftA}}</td>
-                        <td>{{rc.q3.dR}}</td>
-                        <td>{{rc.q3.oR}}</td>
-                        <td>{{rc.q3.ass}}</td>
-                        <td>{{rc.q3.blk}}</td>
-                        <td>{{rc.q3.steal}}</td>
-                        <td>{{rc.q3.turno}}</td>
-                        <td>{{rc.q3.foul}}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+
+        <section>
+
+            <div class="container-fluid">
+
+                <div class="row align-items-center">
+
+                    <div class="col-lg-6 order-lg-2">
+
+                        <div class="p-5">
+
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading">
+
+                                    <h1>第三節數據</h1>
+
+                                </div>
+
+                                <div class="div-inline">
+
+                                    <table class="table table-striped">
+                                        <caption>第三節數據</caption>
+                                        <thead>
+
+                                            <tr>
+
+                                                <th style="width: 10%">球員</th>
+
+                                                <th>兩分進</th>
+
+                                                <th>兩分沒進</th>
+
+                                                <th>三分進</th>
+
+                                                <th>三分沒進</th>
+
+                                                <th>罰球進</th>
+
+                                                <th>罰球沒進</th>
+
+                                                <th>防守籃板</th>
+
+                                                <th>進攻籃板</th>
+
+                                                <th>助攻</th>
+
+                                                <th>阻攻</th>
+
+                                                <th>抄截</th>
+
+                                                <th>失誤</th>
+
+                                                <th>犯規</th>
+
+                                            </tr>
+
+                                        </thead>
+
+                                        <tbody>
+
+                                        {% for rc in game %}
+
+                                             <tr>
+
+                                                <td>{{rc.player.pName}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q3_p2M">{{rc.q3.p2M}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q3_p2A">{{rc.q3.p2A}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q3_p3M">{{rc.q3.p3M}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q3_p3A">{{rc.q3.p3A}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q3_ftM">{{rc.q3.ftM}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q3_ftA">{{rc.q3.ftA}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q3_dR">{{rc.q3.dR}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q3_oR">{{rc.q3.oR}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q3_ass">{{rc.q3.ass}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q3_blk">{{rc.q3.blk}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q3_steal">{{rc.q3.steal}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q3_turno">{{rc.q3.turno}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q3_foul">{{rc.q3.foul}}</td>
+
+                                                <td>
+                                                    <form method="post" action="" onsubmit="return getContent2({{rc.player.pID}},'q3')">
+                                                        <div>
+                                                            <input type ="hidden" name = "upd">
+                                                            <input type ="hidden" name = "pID" value = "{{rc.player.pID}}">
+                                                            <input type ="hidden" name = "quarter" value = "q3">
+                                                            <input type ="hidden" name = "cID" value = "{{c1.cID}}">
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q3_p2M" name="p2M" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q3_p2A" name="p2A" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q3_p3M" name="p3M" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q3_p3A" name="p3A" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q3_ftM" name="ftM" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q3_ftA" name="ftA" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q3_dR" name="dR" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q3_oR" name="oR" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q3_ass" name="ass" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q3_blk" name="blk" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q3_steal" name="steal" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q3_turno" name="turno" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q3_foul" name="foul" >
+                                                    
+                                                            <input type="submit" value="UPDATE">
+                                                        </div>
+                                                    </form>
+                                                </td>
+
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
 
 
 
-        <div>  
-            <table border='1'; width='1000'>
-                <caption>第四節數據</caption>
-                <thead>
-                    <tr>
-                        <th>球員</th>
-                        <th>兩分進</th>
-                        <th>兩分沒進</th>
-                        <th>三分進</th>
-                        <th>三分沒進</th>
-                        <th>罰球進</th>
-                        <th>罰球沒進</th>
-                        <th>防守籃板</th>
-                        <th>進攻籃板</th>
-                        <th>助攻</th>
-                        <th>阻攻</th>
-                        <th>抄截</th>
-                        <th>失誤</th>
-                        <th>犯規</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for rc in game %}
-                    <tr>
-                        <td>{{rc.player.pName}}</td>
-                        <td>{{rc.q4.p2M}}</td>
-                        <td>{{rc.q4.p2A}}</td>
-                        <td>{{rc.q4.p3M}}</td>
-                        <td>{{rc.q4.p3A}}</td>
-                        <td>{{rc.q4.ftM}}</td>
-                        <td>{{rc.q4.ftA}}</td>
-                        <td>{{rc.q4.dR}}</td>
-                        <td>{{rc.q4.oR}}</td>
-                        <td>{{rc.q4.ass}}</td>
-                        <td>{{rc.q4.blk}}</td>
-                        <td>{{rc.q4.steal}}</td>
-                        <td>{{rc.q4.turno}}</td>
-                        <td>{{rc.q4.foul}}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+        <section>
+
+            <div class="container-fluid">
+
+                <div class="row align-items-center">
+
+                    <div class="col-lg-6 order-lg-2">
+
+                        <div class="p-5">
+
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading">
+
+                                    <h1>第四節數據</h1>
+
+                                </div>
+
+                                <div class="div-inline">
+
+                                    <table class="table table-striped">
+                                        <caption>第四節數據</caption>
+                                        <thead>
+
+                                        <tr>
+
+                                            <th style="width: 10%">球員</th>
+
+                                            <th>兩分進</th>
+
+                                            <th>兩分沒進</th>
+
+                                            <th>三分進</th>
+
+                                            <th>三分沒進</th>
+
+                                            <th>罰球進</th>
+
+                                            <th>罰球沒進</th>
+
+                                            <th>防守籃板</th>
+
+                                            <th>進攻籃板</th>
+
+                                            <th>助攻</th>
+
+                                            <th>阻攻</th>
+
+                                            <th>抄截</th>
+
+                                            <th>失誤</th>
+
+                                            <th>犯規</th>
+
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody>
+
+                                    {% for rc in game %}
+
+                                         <tr>
+
+                                                <td>{{rc.player.pName}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q4_p2M">{{rc.q4.p2M}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q4_p2A">{{rc.q4.p2A}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q4_p3M">{{rc.q4.p3M}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q4_p3A">{{rc.q4.p3A}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q4_ftM">{{rc.q4.ftM}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q4_ftA">{{rc.q4.ftA}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q4_dR">{{rc.q4.dR}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q4_oR">{{rc.q4.oR}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q4_ass">{{rc.q4.ass}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q4_blk">{{rc.q4.blk}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q4_steal">{{rc.q4.steal}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q4_turno">{{rc.q4.turno}}</td>
+
+                                                <td contenteditable = "true" id = "_{{rc.player.pID}}_q4_foul">{{rc.q4.foul}}</td>
+
+                                                <td>
+                                                    <form method="post" action="" onsubmit="return getContent2({{rc.player.pID}},'q4')">
+                                                        <div>
+                                                            <input type ="hidden" name = "upd">
+                                                            <input type ="hidden" name = "pID" value = "{{rc.player.pID}}">
+                                                            <input type ="hidden" name = "quarter" value = "q4">
+                                                            <input type ="hidden" name = "cID" value = "{{c1.cID}}">
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q4_p2M" name="p2M" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q4_p2A" name="p2A" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q4_p3M" name="p3M" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q4_p3A" name="p3A" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q4_ftM" name="ftM" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q4_ftA" name="ftA" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q4_dR" name="dR" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q4_oR" name="oR" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q4_ass" name="ass" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q4_blk" name="blk" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q4_steal" name="steal" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q4_turno" name="turno" >
+                                                            <input type="hidden" id = "{{rc.player.pID}}_q4_foul" name="foul" >
+                                                    
+                                                            <input type="submit" value="UPDATE">
+                                                        </div>
+                                                    </form>
+                                                </td>
+
+                                            </tr>
+
+                                    {% endfor %}
+
+                                    </tbody>
+
+                                </table>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
 
     </div>
+
+    
+
+        <!-- Footer -->
+    <footer class="py-4 bg-black">
+      <div class="container">
+        <p class="m-0 text-center text-white small">Copyright &copy; 201718-DB project</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    
+
+    
+
+        <!--重要ㄛ-->
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static "vendor/jquery/jquery.min.js"%}"></script>
+    <script src="{% static "vendor/bootstrap/js/bootstrap.bundle.min.js"%}"></script>
+        <!--重要ㄛ-->
 </body>
+
 </html>

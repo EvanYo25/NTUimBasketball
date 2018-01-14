@@ -1,5 +1,6 @@
 from django import forms
 from .models import Player
+# from django.core.urlresolvers import reverse 
 
 class PlayerForm(forms.Form):
     pName = forms.CharField(max_length=20, required=True, label="名字")
@@ -8,22 +9,29 @@ class PlayerForm(forms.Form):
 
 class ContestForm(forms.Form):
 	#to model->contest
+    # tID = forms.IntegerField()
+    # def __init__(self,*args,**kwargs):
+        # print("X")
+        # self.tID = kwargs.pop("tID")
+        # print("X3")
+
+    print("ss")
     cName = forms.CharField(max_length=20, required=True, label="比賽名稱")
     date  = forms.DateField(required=True, label="日期")
     oppo = forms.CharField(max_length=20, required=True, label="對手")
-
-    # a = Player.objects.all()
-    # d = request.path
-    a = Player.objects.filter(team_id=1)
-    GENDER_CHOICES = []
-    # GENDER_CHOICES.append((u'ab',d))
-    for player in a:
-        GENDER_CHOICES.append((player,player.pName))
-
-#    abc = forms.ChoiceField(required=True, label="球員", choices=GENDER_CHOICES)
+    print("")
+    # print(ttID)
+    print("====================================")
 
 
-    abc = forms.MultipleChoiceField(label="choose your players",choices = GENDER_CHOICES,widget = forms.CheckboxSelectMultiple())
+    # a = Player.objects.filter(team_id=tID)
+    # GENDER_CHOICES = []
+    # # GENDER_CHOICES.append((u'ab',d))
+    # for player in a:
+    #     GENDER_CHOICES.append((player.pID,player.pName))
+    # abc = forms.MultipleChoiceField(label="choose your players",choices = GENDER_CHOICES,widget = forms.CheckboxSelectMultiple())
+    # print("hello")
+
 
     #to model->qRecord
  #    p2M		= forms.IntegerField(default=0)

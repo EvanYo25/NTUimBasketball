@@ -24,10 +24,9 @@ urlpatterns = [
     url(r'^team$', views.listteam, name='team'),
     url(r'^listrecord$', views.listrecord),
     url(r'^record/(?P<tID>\d+)/$', views.detail, name='teamDetail'),
-    url(r'^record/(?P<tID>\d+)/(?P<cID>\d)/$', views.record, name='teamRecord'),
+    url(r'^record/(?P<tID>\d+)/(?P<cID>\d+)/$', views.record, name='teamRecord'),
     url(r'^record/(?P<tID>\d+)/newGame/$', views.addGame, name='addGame'),
     url(r'^record/(?P<tID>\d+)/newGDetail/$', views.gameDetail, name='GDetail'),
-    
 
     url(r'^addPlayer/(?P<id>\d)/$', views.addPlayer),
     url(r'^DELplayer/(?P<pID>\d)/$', views.delPlayer, name='DELplayer'),
