@@ -15,13 +15,9 @@ class ContestForm(forms.Form):
         # self.tID = kwargs.pop("tID")
         # print("X3")
 
-    print("ss")
     cName = forms.CharField(max_length=20, required=True, label="比賽名稱")
     date  = forms.DateField(required=True, label="日期")
     oppo = forms.CharField(max_length=20, required=True, label="對手")
-    print("")
-    # print(ttID)
-    print("====================================")
 
 
     # a = Player.objects.filter(team_id=tID)
@@ -47,14 +43,4 @@ class ContestForm(forms.Form):
 	# steal	= forms.IntegerField(default=0)
 	# turno	= forms.IntegerField(default=0)
 	# foul	= forms.IntegerField(default=0)
-
-
-
-
-# class RecordForm(forms.Form):
-# 	cName = forms.ChoiceField(required=True, label="比賽名稱", choices=GENDER_CHOICES)
-# 	GENDER_CHOICES = (
-# 		(u'M', u'Male'),
-# 		(u'F', u'Female'),
-# 	)
 

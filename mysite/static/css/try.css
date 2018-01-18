@@ -1,14 +1,15 @@
-h1 {
+/*h3 {
     color: #33fffff;
-}
-body {
-    padding-left: 15px;
-}
-.div-inline{
+}*/
+
+/*.div-inline{
     float:left;
     width:350px;
 }
 .title {
     color: #33fffff;
     margin-top: 10px;
+}*/
+input {
+   width:70px;
 }
