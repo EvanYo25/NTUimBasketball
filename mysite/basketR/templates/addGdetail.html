@@ -93,8 +93,8 @@
                                     <caption>第一節</caption>
                                         <thead>
                                             <tr>
-                                                <th>球員名字</th>
-                                                <th>背號</th>
+                                                <th style="width: 90px">球員名字</th>
+                                                <th style="width:60px">背號</th>
                                                 <!-- <th>pID</th> -->
 
                                                 <th>兩分進</th>
@@ -121,54 +121,67 @@
                                                 <!-- <td>{{game.pID}}</td> -->
 
                                                 <td><input id="q1+{{game.pID}}+p2M" name="q1+{{game.pID}}+p2M" type="number" value="0" onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q1+{{game.pID}}+p2M')">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q1+{{game.pID}}+p2M');">-</button></td>
 
                                                 <td><input id="q1+{{game.pID}}+p2A" name="q1+{{game.pID}}+p2A" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q1+{{game.pID}}+p2A');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q1+{{game.pID}}+p2A');">-</button></td>
 
                                                 <td><input id="q1+{{game.pID}}+p3M" name="q1+{{game.pID}}+p3M" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q1+{{game.pID}}+p3M');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q1+{{game.pID}}+p3M');">-</button></td>
 
                                                 <td><input id="q1+{{game.pID}}+p3A" name="q1+{{game.pID}}+p3A" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q1+{{game.pID}}+p3A');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q1+{{game.pID}}+p3A');">-</button></td>
 
                                                 <td><input id="q1+{{game.pID}}+ftM" name="q1+{{game.pID}}+ftM" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q1+{{game.pID}}+ftM');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q1+{{game.pID}}+ftM');">-</button></td>
 
                                                 <td><input id="q1+{{game.pID}}+ftA" name="q1+{{game.pID}}+ftA" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q1+{{game.pID}}+ftA');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q1+{{game.pID}}+ftA');">-</button></td>
 
                                                 <td><input id="q1+{{game.pID}}+dR" name="q1+{{game.pID}}+dR" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q1+{{game.pID}}+dR');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q1+{{game.pID}}+dR');">-</button></td>
 
                                                 <td><input id="q1+{{game.pID}}+oR" name="q1+{{game.pID}}+oR" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q1+{{game.pID}}+oR');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q1+{{game.pID}}+oR');">-</button></td>
 
                                                 <td><input id="q1+{{game.pID}}+ass" name="q1+{{game.pID}}+ass" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q1+{{game.pID}}+ass');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q1+{{game.pID}}+ass');">-</button></td>
 
                                                 <td><input id="q1+{{game.pID}}+blk" name="q1+{{game.pID}}+blk" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q1+{{game.pID}}+blk');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q1+{{game.pID}}+blk');">-</button></td>
 
                                                 <td><input id="q1+{{game.pID}}+steal" name="q1+{{game.pID}}+steal" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q1+{{game.pID}}+steal');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q1+{{game.pID}}+steal');">-</button></td>
 
                                                 <td><input id="q1+{{game.pID}}+turno" name="q1+{{game.pID}}+turno" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q1+{{game.pID}}+turno');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q1+{{game.pID}}+turno');">-</button></td>
 
                                                 <td><input id="q1+{{game.pID}}+foul" name="q1+{{game.pID}}+foul" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q1+{{game.pID}}+foul');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q1+{{game.pID}}+foul');">-</button></td>
                                             </tr>
@@ -182,8 +195,8 @@
                                         <caption>第二節</caption>
                                         <thead>
                                             <tr>
-                                                <th>球員名字</th>
-                                                <th>背號</th>
+                                                <th style="width: 90px">球員名字</th>
+                                                <th style="width: 60px">背號</th>
                                                 <!-- <th>pID</th> -->
 
                                                 <th>兩分進</th>
@@ -210,54 +223,67 @@
                                                 <!-- <td>{{game.pID}}</td> -->
 
                                                 <td><input id="q2+{{game.pID}}+p2M" name="q2+{{game.pID}}+p2M" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q2+{{game.pID}}+p2M');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q2+{{game.pID}}+p2M');">-</button></td>
 
                                                 <td><input id="q2+{{game.pID}}+p2A" name="q2+{{game.pID}}+p2A" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q2+{{game.pID}}+p2A');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q2+{{game.pID}}+p2A');">-</button></td>
 
                                                 <td><input id="q2+{{game.pID}}+p3M" name="q2+{{game.pID}}+p3M" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q2+{{game.pID}}+p3M');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q2+{{game.pID}}+p3M');">-</button></td>
 
                                                 <td><input id="q2+{{game.pID}}+p3A" name="q2+{{game.pID}}+p3A" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q2+{{game.pID}}+p3A');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q2+{{game.pID}}+p3A');">-</button></td>
 
                                                 <td><input id="q2+{{game.pID}}+ftM" name="q2+{{game.pID}}+ftM" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q2+{{game.pID}}+ftM');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q2+{{game.pID}}+ftM');">-</button></td>
 
                                                 <td><input id="q2+{{game.pID}}ftA+" name="q2+{{game.pID}}+ftA" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q2+{{game.pID}}+ftA');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q2+{{game.pID}}+ftA');">-</button></td>
 
                                                 <td><input id="q2+{{game.pID}}+dR" name="q2+{{game.pID}}+dR" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q2+{{game.pID}}+dR');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q2+{{game.pID}}+dR');">-</button></td>
 
                                                 <td><input id="q2+{{game.pID}}+oR" name="q2+{{game.pID}}+oR" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q2+{{game.pID}}+oR');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q2+{{game.pID}}+oR');">-</button></td>
 
                                                 <td><input id="q2+{{game.pID}}+ass" name="q2+{{game.pID}}+ass" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q2+{{game.pID}}+ass');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q2+{{game.pID}}+ass');">-</button></td>
 
                                                 <td><input id="q2+{{game.pID}}+blk" name="q2+{{game.pID}}+blk" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q2+{{game.pID}}+blk');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q2+{{game.pID}}+blk');">-</button></td>
 
                                                 <td><input id="q2+{{game.pID}}+steal" name="q2+{{game.pID}}+steal" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q2+{{game.pID}}+steal');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q2+{{game.pID}}+steal');">-</button></td>
 
                                                 <td><input id="q2+{{game.pID}}+turno" name="q2+{{game.pID}}+turno" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q2+{{game.pID}}+turno');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q2+{{game.pID}}+turno');">-</button></td>
 
                                                 <td><input id="q2+{{game.pID}}+foul" name="q2+{{game.pID}}+foul" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q2+{{game.pID}}+foul');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q2+{{game.pID}}+foul');">-</button></td>
                                             </tr>
@@ -271,8 +297,8 @@
                                         <caption>第三節</caption>
                                         <thead>
                                             <tr>
-                                                <th>球員名字</th>
-                                                <th>背號</th>
+                                                <th style="width: 90px">球員名字</th>
+                                                <th style="width: 60px">背號</th>
                                                 <!-- <th>pID</th> -->
 
                                                 <th>兩分進</th>
@@ -299,54 +325,67 @@
                                                 <!-- <td>{{game.pID}}</td> -->
 
                                                 <td><input id="q3+{{game.pID}}+p2M" name="q3+{{game.pID}}+p2M" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q3+{{game.pID}}+p2M');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q3+{{game.pID}}+p2M');">-</button></td>
 
                                                 <td><input id="q3+{{game.pID}}+p2A" name="q3+{{game.pID}}+p2A" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q3+{{game.pID}}+p2A');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q3+{{game.pID}}+p2A');">-</button></td>
 
                                                 <td><input id="q3+{{game.pID}}+p3M" name="q3+{{game.pID}}+p3M" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q3+{{game.pID}}+p3M');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q3+{{game.pID}}+p3M');">-</button></td>
 
                                                 <td><input id="q3+{{game.pID}}+p3A" name="q3+{{game.pID}}+p3A" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q3+{{game.pID}}+p3A');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q3+{{game.pID}}+p3A');">-</button></td>
 
                                                 <td><input id="q3+{{game.pID}}+ftM" name="q3+{{game.pID}}+ftM" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q3+{{game.pID}}+ftM');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q3+{{game.pID}}+ftM');">-</button></td>
 
                                                 <td><input id="q3+{{game.pID}}+ftA" name="q3+{{game.pID}}+ftA" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q3+{{game.pID}}+ftA');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q3+{{game.pID}}+ftA');">-</button></td>
 
                                                 <td><input id="q3+{{game.pID}}+dR" name="q3+{{game.pID}}+dR" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q3+{{game.pID}}+dR');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q3+{{game.pID}}+dR');">-</button></td>
 
                                                 <td><input id="q3+{{game.pID}}+oR" name="q3+{{game.pID}}+oR" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q3+{{game.pID}}+oR');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q3+{{game.pID}}+oR');">-</button></td>
 
                                                 <td><input id="q3+{{game.pID}}+ass" name="q3+{{game.pID}}+ass" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q3+{{game.pID}}+ass');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q3+{{game.pID}}+ass');">-</button></td>
 
                                                 <td><input id="q3+{{game.pID}}+blk" name="q3+{{game.pID}}+blk" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q3+{{game.pID}}+blk');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q3+{{game.pID}}+blk');">-</button></td>
 
                                                 <td><input id="q3+{{game.pID}}+steal" name="q3+{{game.pID}}+steal" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q3+{{game.pID}}+steal');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q3+{{game.pID}}+steal');">-</button></td>
 
                                                 <td><input id="q3+{{game.pID}}+turno" name="q3+{{game.pID}}+turno" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q3+{{game.pID}}+turno');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q3+{{game.pID}}+turno');">-</button></td>
 
                                                 <td><input id="q3+{{game.pID}}+foul" name="q3+{{game.pID}}+foul" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q3+{{game.pID}}+foul');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q3+{{game.pID}}+foul');">-</button></td>
                                             </tr>
@@ -360,8 +399,8 @@
                                         <caption>第四節</caption>
                                         <thead>
                                             <tr>
-                                                <th>球員名字</th>
-                                                <th>背號</th>
+                                                <th style="width: 90px">球員名字</th>
+                                                <th style="width: 60px">背號</th>
                                                 <!-- <th>pID</th> -->
                                                 <th>兩分進</th>
                                                 <th>兩分沒進</th>
@@ -387,55 +426,68 @@
                                                 <!-- <td>{{game.pID}}</td> -->
 
                                                 <td><input id="q4+{{game.pID}}+p2M" name="q4+{{game.pID}}+p2M" type="number" value="0" onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q4+{{game.pID}}+p2M');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q4+{{game.pID}}+p2M');">-</button></td>
 
                                                 <td><input id="q4+{{game.pID}}+p2A" name="q4+{{game.pID}}+p2A" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q4+{{game.pID}}+p2A');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q4+{{game.pID}}+p2A');">-</button></td>
 
                                                 <td><input id="q4+{{game.pID}}+p3M" name="q4+{{game.pID}}+p3M" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q4+{{game.pID}}+p3M');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q4+{{game.pID}}+p3M');">-</button></td>
 
                                                 <td><input id="q4+{{game.pID}}+p3A" name="q4+{{game.pID}}+p3A" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q4+{{game.pID}}+p3A');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q4+{{game.pID}}+p3A');">-</button></td>
 
                                                 <td><input id="q4+{{game.pID}}+ftM" name="q4+{{game.pID}}+ftM" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q4+{{game.pID}}+ftM');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q4+{{game.pID}}+ftM');">-</button></td>
 
                                                 <td><input id="q4+{{game.pID}}+ftA" name="q4+{{game.pID}}+ftA" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q4+{{game.pID}}+ftA');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q4+{{game.pID}}+ftA');">-</button></td>
 
 
                                                 <td><input id="q4+{{game.pID}}+dR" name="q4+{{game.pID}}+dR" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q4+{{game.pID}}+dR');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q4+{{game.pID}}+dR');">-</button></td>
 
                                                 <td><input id="q4+{{game.pID}}+oR" name="q4+{{game.pID}}+oR" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q4+{{game.pID}}+oR');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q4+{{game.pID}}+oR');">-</button></td>
 
                                                 <td><input id="q4+{{game.pID}}+ass" name="q4+{{game.pID}}+ass" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q4+{{game.pID}}+ass');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q4+{{game.pID}}+ass');">-</button></td>
 
                                                 <td><input id="q4+{{game.pID}}+blk" name="q4+{{game.pID}}+blk" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q4+{{game.pID}}+blk');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q4+{{game.pID}}+blk');">-</button></td>
 
                                                 <td><input id="q4+{{game.pID}}+steal" name="q4+{{game.pID}}+steal" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q4+{{game.pID}}+steal');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q4+{{game.pID}}+steal');">-</button></td>
 
                                                 <td><input id="q4+{{game.pID}}+turno" name="q4+{{game.pID}}+turno" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q4+{{game.pID}}+turno');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q4+{{game.pID}}+turno');">-</button></td>
 
                                                 <td><input id="q4+{{game.pID}}+foul" name="q4+{{game.pID}}+foul" type="number" value=0 onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                                    <br>
                                                     <button class="btn btn-outline-success btn-sm" type="button" name="button" id="button" onclick="plus('q4+{{game.pID}}+foul');">+</button>
                                                     <button class="btn btn-outline-danger btn-sm" type="button" name="button" id="button" onclick="minus('q4+{{game.pID}}+foul');">-</button></td>
                                             </tr>
