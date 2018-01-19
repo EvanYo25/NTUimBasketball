@@ -28,9 +28,11 @@ urlpatterns = [
     url(r'^record/(?P<tID>\d+)/newGame/$', views.addGame, name='addGame'),
     url(r'^record/(?P<tID>\d+)/newGDetail/$', views.gameDetail, name='GDetail'),
 
-    url(r'^addPlayer/(?P<id>\d)/$', views.addPlayer),
-    url(r'^DELplayer/(?P<pID>\d)/$', views.delPlayer, name='DELplayer'),
-    url(r'^welcome/$', views.welcome),
+    url(r'^accounts/login/$', views.login),
+    url(r'^accounts/logout/$', views.logout),
+    # url(r'^addPlayer/(?P<id>\d)/$', views.addPlayer),
+    # url(r'^DELplayer/(?P<pID>\d)/$', views.delPlayer, name='DELplayer'),
+    # url(r'^welcome/$', views.welcome),
     # url(r'^addPlayer$', views.addPlayer),
     # url(r'^create/$', 'views.addPlayer'),
 ]

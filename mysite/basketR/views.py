@@ -1,6 +1,7 @@
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from django.contrib import auth
 import datetime
 
 from .models import Team, Player, Contest, QRecord, GameRecord
@@ -196,64 +197,35 @@ def record(request, tID, cID):
 	return render(request, 'record.html', context)
 
 
-# def addPlayer(request):
-#     ctx = {}
-#     if request.POST:
-#         team = Team.objects.filter(tID=1)
+# def addPlayer(request,id):
+#     if id:
+#         r = Team.objects.get(tID=id)
+#     else:
+#         return HttpResponseRedirect("/addPlayer/")
+#     if 'ok' in request.POST: 
 #         pName = request.POST['pName']
 #         pNum = request.POST['pNum']
 #         stuID = request.POST['stuID']
-#         Player.objects.create(team=team, pName=pName, pNum=pNum, stuID=stuID)
-#     return render(request, "listteam.html", ctx)
+#         c = Player(pName=pName, pNum=pNum, stuID=stuID, team=r)
+#         c.save()
+#     f = PlayerForm()
+#     return render_to_response('addPlayer.html',locals())
 
-# from django import forms
-
-# class PlayerForm(forms.ModelForm):
-#     class Meta:
-#         model = Player
-#         fields = ['pID', 'team', 'pName', 'pID', 'stuID']
-
-# from django.http import HttpResponseRedirect
-
-# def addPlayer(request):
-#     if request.method == 'POST':
-#         form = PlayerForm(request.POST)
-#         if form.is_valid():
-#             new_article = form.save()
-#             return HttpResponseRedirect('/article/' + str(new_article.pk))
-
-#     form = ArticleForm()
-#     return render(request, 'create_article.html', {'form': form})
-
-def addPlayer(request,id):
-    if id:
-        r = Team.objects.get(tID=id)
-    else:
-        return HttpResponseRedirect("/addPlayer/")
-    if 'ok' in request.POST: 
-        pName = request.POST['pName']
-        pNum = request.POST['pNum']
-        stuID = request.POST['stuID']
-        c = Player(pName=pName, pNum=pNum, stuID=stuID, team=r)
-        c.save()
-    f = PlayerForm()
-    return render_to_response('addPlayer.html',locals())
-
-def delPlayer(request,pID):
-    if pID:
-    	Player.objects.filter(pID=pID).delete()
-    else:
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    return render_to_response('detail.html',locals())
+# def delPlayer(request,pID):
+#     if pID:
+#     	Player.objects.filter(pID=pID).delete()
+#     else:
+#         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+#     return render_to_response('detail.html',locals())
 
 
-def welcome(request):
-    if 'user_name' in request.GET:
-    	# 對應到HTML中的USER_NAME
-        return HttpResponse('Welcome!~'+request.GET['user_name'])   
-    #先進來
-    else:
-        return render_to_response('team.html',locals())
+# def welcome(request):
+#     if 'user_name' in request.GET:
+#     	# 對應到HTML中的USER_NAME
+#         return HttpResponse('Welcome!~'+request.GET['user_name'])   
+#     #先進來
+#     else:
+#         return render_to_response('team.html',locals())
 
 
 
@@ -293,4 +265,23 @@ def gameDetail(request, tID):
 		return render_to_response('addGdetail.html',context)
 	# return render_to_response('addGdetail.html',context)
 
+
+def login(request):
+    if request.user.is_authenticated: 
+        return HttpResponseRedirect('/team')
+
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+    
+    user = auth.authenticate(username=username, password=password)
+
+    if user is not None and user.is_active:
+        auth.login(request, user)
+        return HttpResponseRedirect('/team')
+    else:
+        return render_to_response('login.html')
+
+def logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect('/team')
 

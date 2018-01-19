@@ -35,6 +35,23 @@
 
 
     <body class="container container-center text-center">
+
+
+
+        <div style="margin:50px">
+            <h3>Welcome to NTUIM Record</h3>
+        {% if request.user.is_authenticated %}
+            <p>
+                {{request.user}} 您已經登入囉~
+                <a href="/accounts/logout/">登出</a>
+            </p>
+            <!-- <a href="/restaurants_list/">餐廳列表</a> -->
+        {% else %}
+            <p>您尚未登入喔~<a href="/accounts/login/">登入</a></p>
+        {% endif %}
+        </div>
+
+
         <div style="margin:50px">
             <h3>隊伍列表</h3>
         </div>
@@ -56,5 +73,9 @@
                 </tbody>
             </table>
         </div>
+
+
+
+
     </body>
 </html>
