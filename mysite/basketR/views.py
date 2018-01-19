@@ -1,7 +1,7 @@
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from django.contrib import auth
+from django.contrib import auth, messages
 import datetime
 
 from .models import Team, Player, Contest, QRecord, GameRecord
@@ -25,6 +25,19 @@ def listrecord(request):
 	return render(request, 'listrecord.html', context)
 
 def detail(request, tID):
+	#沒有登入
+	if not request.user.is_authenticated:
+		messages.info(request, 'Please log in first!')
+		return HttpResponseRedirect('/team')
+	#點到別人的隊伍
+	# print(request.user.get_short_name())
+	# print("hello")
+	if not request.user.is_superuser:
+		if not request.user.get_short_name()==tID:
+			messages.info(request, 'Not able to see!')
+			return HttpResponseRedirect('/team')
+
+	# print(request.user.email);
 	team = Team.objects.get(tID=tID)
 	player = Player.objects.filter(team=team)
 	contest = Contest.objects.filter(team=team)
