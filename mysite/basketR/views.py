@@ -56,6 +56,8 @@ def detail(request, tID):
 		if pID:
 			if len(GameRecord.objects.filter(player_id=pID))  == 0:
 				Player.objects.filter(pID=pID).delete()
+				return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+		messages.info(request, '刪除失敗，此球員還有球賽紀錄')
 		return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 	if 'delGame' in request.POST:
