@@ -61,6 +61,7 @@ def detail(request, tID):
 	if 'delGame' in request.POST:
 		cID = request.POST['gID']
 		if cID:
+			GameRecord.objects.filter(contest_id=cID).delete()
 			Contest.objects.filter(cID=cID).delete()
 		return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
@@ -97,20 +98,46 @@ def detail(request, tID):
 				x = player.pID
 				x = str(x)
 				target = q+"+"+x+"+"
-				Q = QRecord()
-				Q.p2M =request.POST[target+'p2M']
-				Q.p3M =request.POST[target+'p3M']
-				Q.p3A =request.POST[target+'p3A']
-				Q.ftM =request.POST[target+'ftM']
-				Q.ftA =request.POST[target+'ftA']
-				Q.dR =request.POST[target+'dR']
-				Q.oR =request.POST[target+'oR']
-				Q.ass =request.POST[target+'ass']
-				Q.blk =request.POST[target+'blk']
-				Q.steal =request.POST[target+'steal']
-				Q.turno =request.POST[target+'turno']
-				Q.foul =request.POST[target+'foul']
-				Q.save()
+				# Q = QRecord()
+				# Q.p2M =request.POST[target+'p2M']
+				# Q.p2A = request.POST[target+'p2A']
+				# Q.p3M =request.POST[target+'p3M']
+				# Q.p3A =request.POST[target+'p3A']
+				# Q.ftM =request.POST[target+'ftM']
+				# Q.ftA =request.POST[target+'ftA']
+				# Q.dR =request.POST[target+'dR']
+				# Q.oR =request.POST[target+'oR']
+				# Q.ass =request.POST[target+'ass']
+				# Q.blk =request.POST[target+'blk']
+				# Q.steal =request.POST[target+'steal']
+				# Q.turno =request.POST[target+'turno']
+				# Q.foul =request.POST[target+'foul']
+				# Q.save()
+
+
+
+				# if (QRecord.objects.get(p2M=request.POST[target+'p2M'], p2A=request.POST[target+'p2A'], p3M=request.POST[target+'p3M'], p3A=request.POST[target+'p3A'], ftM=request.POST[target+'ftM'], ftA=request.POST[target+'ftA'], dR=request.POST[target+'dR'], oR=request.POST[target+'oR'], ass=request.POST[target+'ass'], blk=request.POST[target+'blk'], steal=request.POST[target+'steal'], turno=request.POST[target+'turno'], foul=request.POST[target+'foul'] )).exists():
+				try:
+					Q=QRecord.objects.get(p2M=request.POST[target+'p2M'], p2A=request.POST[target+'p2A'], p3M=request.POST[target+'p3M'], p3A=request.POST[target+'p3A'], ftM=request.POST[target+'ftM'], ftA=request.POST[target+'ftA'], dR=request.POST[target+'dR'], oR=request.POST[target+'oR'], ass=request.POST[target+'ass'], blk=request.POST[target+'blk'], steal=request.POST[target+'steal'], turno=request.POST[target+'turno'], foul=request.POST[target+'foul'])
+				except:
+					Q = QRecord()
+					Q.p2M =request.POST[target+'p2M']
+					Q.p2A = request.POST[target+'p2A']
+					Q.p3M =request.POST[target+'p3M']
+					Q.p3A =request.POST[target+'p3A']
+					Q.ftM =request.POST[target+'ftM']
+					Q.ftA =request.POST[target+'ftA']
+					Q.dR =request.POST[target+'dR']
+					Q.oR =request.POST[target+'oR']
+					Q.ass =request.POST[target+'ass']
+					Q.blk =request.POST[target+'blk']
+					Q.steal =request.POST[target+'steal']
+					Q.turno =request.POST[target+'turno']
+					Q.foul =request.POST[target+'foul']
+					Q.save()
+
+
+
 				if i==1:
 					gamerecord.q1 = Q
 				elif i==2:
@@ -136,29 +163,73 @@ def record(request, tID, cID):
 		cID = request.POST['cID']
 		pID = request.POST['pID']
 		quarter = request.POST['quarter']
-		game = GameRecord.objects.get(contest_id=int(cID),player_id = int(pID))
-		q = game.q1
-		if quarter == 'q2':
-			q = game.q2
-		elif quarter =='q3':
-			q = game.q3
-		elif quarter =='q4':
-			q = game.q4
 
-		q.p2M = request.POST['p2M']
-		q.p2A = request.POST['p2A']
-		q.p3M = request.POST['p3M']
-		q.p3A = request.POST['p3A']
-		q.ftM = request.POST['ftM']
-		q.ftA = request.POST['ftA']
-		q.dR = request.POST['dR']
-		q.oR = request.POST['oR']
-		q.ass = request.POST['ass']
-		q.blk = request.POST['blk']
-		q.steal = request.POST['steal']
-		q.turno = request.POST['turno']
-		q.foul = request.POST['foul']
-		q.save()
+		# game = GameRecord.objects.get(contest_id=int(cID),player_id = int(pID))
+		# q = game.q1
+		# if quarter == 'q2':
+		# 	q = game.q2
+		# elif quarter =='q3':
+		# 	q = game.q3
+		# elif quarter =='q4':
+		# 	q = game.q4
+
+		# q.p2M = request.POST['p2M']
+		# q.p2A = request.POST['p2A']
+		# q.p3M = request.POST['p3M']
+		# q.p3A = request.POST['p3A']
+		# q.ftM = request.POST['ftM']
+		# q.ftA = request.POST['ftA']
+		# q.dR = request.POST['dR']
+		# q.oR = request.POST['oR']
+		# q.ass = request.POST['ass']
+		# q.blk = request.POST['blk']
+		# q.steal = request.POST['steal']
+		# q.turno = request.POST['turno']
+		# q.foul = request.POST['foul']
+		# q.save()
+
+
+
+		try:
+			# print("hello")
+			Q=QRecord.objects.get(p2M=request.POST['p2M'], p2A=request.POST['p2A'], p3M=request.POST['p3M'], p3A=request.POST['p3A'], ftM=request.POST['ftM'], ftA=request.POST['ftA'], dR=request.POST['dR'], oR=request.POST['oR'], ass=request.POST['ass'], blk=request.POST['blk'], steal=request.POST['steal'], turno=request.POST['turno'], foul=request.POST['foul'])
+		except:
+			print("hello")
+			Q = QRecord()
+			Q.p2M =request.POST['p2M']
+			Q.p2A = request.POST['p2A']
+			Q.p3M =request.POST['p3M']
+			Q.p3A =request.POST['p3A']
+			Q.ftM =request.POST['ftM']
+			Q.ftA =request.POST['ftA']
+			Q.dR =request.POST['dR']
+			Q.oR =request.POST['oR']
+			Q.ass =request.POST['ass']
+			Q.blk =request.POST['blk']
+			Q.steal =request.POST['steal']
+			Q.turno =request.POST['turno']
+			Q.foul =request.POST['foul']
+			Q.save()
+		game = GameRecord.objects.get(contest_id=int(cID),player_id = int(pID))
+		if quarter =='q1':
+			game.q1 = Q
+			game.save()
+			print('1')
+		elif quarter == 'q2':
+			game.q2 = Q
+			game.save()
+			print('2')
+		elif quarter =='q3':
+			game.q3 = Q
+			game.save()
+			print('3')
+		elif quarter =='q4':
+			game.q4 = Q
+			game.save()
+			print('4')
+
+
+
 		return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 	team = Team.objects.get(tID=tID)
